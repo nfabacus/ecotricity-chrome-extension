@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Ecotricity App</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div id="container">
+			<h1>Ecotricity App</h1>
+
+			<div id="map"></div>
+
+			<h2 id="instruction">Charging stations near you...</h2>
+			<button id="findStations" class="btn">Find</button>
+			<div id="chargingStations"></div>
+
+
+			<script src="library/jquery-3.1.1.min.js"></script>
+			<script src="map.js"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?callback=getMyCoords"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+		</div>
+	</body>
+</html>

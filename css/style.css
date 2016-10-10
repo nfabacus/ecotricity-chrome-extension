@@ -1,0 +1,43 @@
+#container {
+  text-align:center;
+}
+
+#map {
+  margin: auto;
+  width:80%;
+  height:500px;
+}
+
+.btn {
+  border: 0px;
+  margin: 10px;
+  box-shadow: 5px 5px 5px #888888;
+  background: #f7f7f7;
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #94e629);
+  background-image: -moz-linear-gradient(top, #f7f7f7, #94e629);
+  background-image: -ms-linear-gradient(top, #f7f7f7, #94e629);
+  background-image: -o-linear-gradient(top, #f7f7f7, #94e629);
+  background-image: linear-gradient(to bottom, #f7f7f7, #94e629);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #302530;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #fafafa;
+  background-image: -webkit-linear-gradient(top, #fafafa, #d9fa57);
+  background-image: -moz-linear-gradient(top, #fafafa, #d9fa57);
+  background-image: -ms-linear-gradient(top, #fafafa, #d9fa57);
+  background-image: -o-linear-gradient(top, #fafafa, #d9fa57);
+  background-image: linear-gradient(to bottom, #fafafa, #d9fa57);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline:0;
+}
