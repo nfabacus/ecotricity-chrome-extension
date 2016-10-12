@@ -1,3 +1,18 @@
+/*Style for brand*/
+.logo {
+  margin: 18px 10px 18px 10px;
+}
+
+.strapline {
+  margin: 18px 0px 18px 0px;
+}
+
+/*General style*/
+body {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size: 13px;
+}
+
 #container {
   text-align:center;
 }
@@ -5,7 +20,78 @@
 #map {
   margin: auto;
   width:80%;
-  height:500px;
+  height:600px;
+}
+
+/*Style for drop down list for selecting a car*/
+.selectBox {
+  font-size: 25px;
+}
+
+/*Style for Nearest Location List*/
+ul {
+    list-style-image: url('../library/images/point-b.png');
+}
+
+#chargingStations {
+  display: inline-block;
+}
+
+.locationListItem {
+  font-size: 25px;
+  margin: 10px;
+  text-align: left;
+}
+
+
+
+/*style for info window*/
+.narrow {
+  margin: 5px;
+}
+
+.infowindow {
+
+}
+
+.gm-style .gm-style-iw {
+    font-weight: inherit;
+    font-size: 20px;
+}
+
+.connectorDiv {
+  border-radius: 8px;
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  background-color: #CDDC39;
+}
+
+/*Style for direction panel*/
+#direction-panel {
+  width: 80%;
+  margin: auto;
+}
+
+table.adp-directions {
+  margin: auto;
+}
+
+/*Style for route table*/
+.adp, .adp table {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.adp-summary {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/*Button style*/
+.findBtn {
+  display: block;
+  margin: auto !important;
 }
 
 .btn {
