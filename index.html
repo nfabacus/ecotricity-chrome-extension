@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title>Ecotricity App</title>
+		<link rel="stylesheet" href="css/animate.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -14,7 +15,7 @@
 				<img class="strapline" src="library/images/britain-s-leading-green-energy-supplier.jpg" alt="Ecotricity Logo" />
 			</div>
 			<div id="map"></div>
-			<div id="direction-panel"></div>
+			<div id="direction-panel" classs="animated slideInUp"></div>
 
 			<h1 id="instruction">Electric Highway Finder</h1>
 
@@ -24,13 +25,12 @@
 				  <option value=""></option>
 				  <option value="Audi A3 e-tron (2014-)">Audi A3 e-tron (2014-)</option>
 				  <option value="Audi Q7 e-Tron (2015-)">Audi Q7 e-Tron (2015-)</option>
-				  <option value="Audi Q8 e-Tron (2015-)">Audi Q8 e-Tron (2015-)</option>
 				  <option value="Nissan e-NV200 Combi (2015-)">Nissan e-NV200 Combi (2015-)</option>
 				  <option value="Nissan e-NV200 Evalia (2015-)">Nissan e-NV200 Evalia (2015-)</option>
 				  <option value="Nissan e-NV200 van (2014-)">Nissan e-NV200 van (2014-)</option>
-				  <option value="Ford C-MAX Energi">Ford C-MAX Energi (2014-)</option>
-				  <option value="Ford Focus EV">Ford Focus EV (2014-)</option>
-				  <option value="Ford Fusion Energi">Ford Fusion Energi (2015-)</option>
+				  <option value="Ford C-MAX Energi (2014-)">Ford C-MAX Energi (2014-)</option>
+				  <option value="Ford Focus EV (2014-)">Ford Focus EV (2014-)</option>
+				  <option value="Ford Fusion Energi (2015-)">Ford Fusion Energi (2015-)</option>
 				</select>
 				<h3 id="yourCar"></h3>
 			</div>
@@ -41,7 +41,7 @@
 
 
 			<script src="library/jquery-3.1.1.min.js"></script>
-			<script src="map.js"></script>
+			<script src="app.js"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 
 		</div>

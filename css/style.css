@@ -90,7 +90,7 @@ table.adp-directions {
 
 /*Button style*/
 .findBtn {
-  display: block;
+  display: none;
   margin: auto !important;
 }
 

@@ -1,21 +1,19 @@
 var directionsService;
 var directionsDisplay;
 var map;
-var myDataObj ={};
 
 $("#cars").change(function(){
-  myDataObj ={};
   var str = $("#cars").val();
-  var strArr = str.split(/\s+/);
-  $("#yourCar").html("Your car: "+str);
-
-  myDataObj.vehicleSpec = strArr[3];
-  myDataObj.vehicleMake = strArr[0];
-  myDataObj.vehicleModel = strArr[1]+" "+strArr[2];
-
-  if (str !== "") {
-    getMyCoords(myDataObj);
-  }
+  var strArr = str.split(" ");
+  var myDataObj = {
+    "latitude": "",
+    "longitude": "",
+    "vehicleSpec": strArr[3],
+    "vehicleMake": strArr[0],
+    "vehicleModel": strArr[1]+" "+strArr[2]
+  };
+  $("#yourCar").html("Your car: "+myDataObj.vehicleMake+" "+myDataObj.vehicleModel+" "+myDataObj.vehicleSpec);
+  getMyCoords(myDataObj);
 });
 
 function myMap() {
@@ -29,23 +27,23 @@ function myMap() {
 
 function getMyCoords(myDataObj) {
   var instructionEl = document.getElementById("instruction");
-    if (navigator.geolocation) {
-      $("#instruction").html("Finding your location ...");
+      if (navigator.geolocation) {
+      $("#instruction").html("<span class='animated fadeIn'>Finding your location...</span>");
       navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
         instructionEl.innerHTML = "Geolocation is not supported by this browser.";
     }
 
   function showPosition(position) {
-    $("#instruction").html("Got your location.<br/> Let's find your nearest charging stations.");
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
     myDataObj.latitude = lat;
     myDataObj.longitude = long;
-    var locatObj = myDataObj;
-    place_marker(map, locatObj, undefined, "You are here!");
+    $("#instruction").html("<span class='animated fadeIn'>Got your location.<br>Let's find charging stations near you.</span>");
+    //now myDataObj has all the User car and location information.
+    place_marker(map, myDataObj, undefined, "You are here!");
+    $('button#findStations.findBtn').css({"display":"block"});
     $('button#findStations').click(function(){
-      console.log("myObj when press Find stations btn: ", myDataObj);
       find_stationsNearMe(myDataObj);
     });
   }
@@ -104,7 +102,6 @@ function place_marker(map, locatObj, myDataObj, message) {
     contentStr +='<button id="getDirectionBtn" class="btn">Get Directions</button><br/>';
   }
   if (typeof(myDataObj)!=="undefined") {
-    console.log("myDataObj:", myDataObj);
     display_locationDetails(locatObj, myDataObj, map, marker, contentStr);
   } else {
     display_infowindow(locatObj, myDataObj, map, marker, contentStr);
@@ -136,6 +133,7 @@ function find_stationsNearMe(myDataObj) {
   };
 
   $.ajax(settings).done(function (data) {
+    $("#instruction").html("<span class='animated fadeIn'>Here are the 10 charnging stations closest to you.</br> Click each marker above to see more details, including distance and directions.</span>");
     $("#chargingStations").empty();
     var stations = data.result;
     stations.forEach(function(stationObj){
@@ -163,11 +161,6 @@ function display_locationDetails(locatObj, myDataObj, map, marker, contentStr){
       "vehicleMake": myDataObj.vehicleMake
     }
   };
-  console.log("myDataObj.vehicleSpec:", myDataObj.vehicleSpec);
-  console.log("myDataObj.vehicleModel:", myDataObj.vehicleModel);
-  console.log("locatObj.locationId:", locatObj.locationId);
-  console.log("myDataObj.vehicleMake:", myDataObj.vehicleMake);
-
 
   $.ajax(settings).done(function (data) {
     var stationPumps = data.result.pump;
@@ -215,22 +208,22 @@ function select_iconImg(pumpModel){
   var iconImg ="";
   switch(pumpModel) {
     case "DC (CHAdeMO) / CCS":
-      iconImg = "https://d2suciz5inbc0m.cloudfront.net/extension/ecotricity-design/design/ecotricity-design/images/electric-highway/pin-acdc-dc.png";
+      iconImg = "library/images/pin-acdc-dc.png";
       break;
     case "AC (RAPID) / DC (CHAdeMO)":
-      iconImg = "https://d2suciz5inbc0m.cloudfront.net/extension/ecotricity-design/design/ecotricity-design/images/electric-highway/pin-dcac-ac.png";
+      iconImg = "library/images/pin-dcac-ac.png";
       break;
       case "AC (RAPID)":
-        iconImg = "https://d2suciz5inbc0m.cloudfront.net/extension/ecotricity-design/design/ecotricity-design/images/electric-highway/pin-ac.png";
+        iconImg = "library/images/pin-ac.png";
         break;
     case "AC (Medium)":
-      iconImg = "https://d2suciz5inbc0m.cloudfront.net/extension/ecotricity-design/design/ecotricity-design/images/electric-highway/pin-ac.png";
+      iconImg = "library/images/pin-ac.png";
       break;
     case "DC (CHAdeMO)":
-      iconImg = "https://d2suciz5inbc0m.cloudfront.net/extension/ecotricity-design/design/ecotricity-design/images/electric-highway/pin-acdc.png";
+      iconImg = "library/images/pin-acdc.png";
       break;
     case "CCS":
-      iconImg = "https://d2suciz5inbc0m.cloudfront.net/extension/ecotricity-design/design/ecotricity-design/images/electric-highway/pin-dc.png";
+      iconImg = "library/images/pin-dc.png";
       break;
     default:
   }
@@ -248,7 +241,6 @@ function calculateAndDisplayRoute(origin, destination) {
   }, function(response, status) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
-      $("#instruction").html("Got your route!  Try another car?");
     } else {
       window.alert('Directions request failed due to ' + status);
     }
